@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TmpsRepositoryAndroid</string>
+
+    <string name="left_front_id">左前：%1$s</string>
+    <string name="right_front_id">右前：%1$s</string>
+    <string name="left_rear_id">左后：%1$s</string>
+    <string name="right_rear_id">右后：%1$s</string>
+    <string name="please_set_id">请设置ID</string>
+
+    <string name="left_front_hint">左前:</string>
+    <string name="left_rear_hint">左后:</string>
+    <string name="right_front_hint">右前:</string>
+    <string name="right_rear_hint">右后:</string>
+
+    <string name="left_front_error">左前ID错误</string>
+    <string name="left_rear_error">左后ID错误</string>
+    <string name="right_front_error">右前ID错误</string>
+    <string name="right_rear_error">右后ID错误</string>
+    <string name="set_id_success">设置成功</string>
+    <string name="query">确定</string>
+    <string name="cancel">退出</string>
+
+</resources>

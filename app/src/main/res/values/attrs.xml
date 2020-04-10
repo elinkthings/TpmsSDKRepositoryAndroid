@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyTextView">
+        <attr name="drawable_Size" format="dimension"/>
+        <attr name="drawable_Top" format="reference"/>
+        <attr name="drawable_Left" format="reference"/>
+        <attr name="drawable_Right" format="reference"/>
+        <attr name="drawable_Bottom" format="reference"/>
+    </declare-styleable>
+</resources>
