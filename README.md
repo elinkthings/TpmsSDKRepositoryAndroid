@@ -1,3 +1,5 @@
+[TOC]
+
 # TPMS SDK instructions-Android
 
 [![](https://jitpack.io/v/elinkthings/TmpsSDKRepositoryAndroid.svg)](https://jitpack.io/#elinkthings/TmpsSDKRepositoryAndroid)
@@ -6,9 +8,9 @@
 
 [key registered address](http://sdk.aicare.net.cn)
 
-[中文文档](README_CN.md)
 
-This document is to guide Android developers to integrate TPMS-SDK-Android in Android 4.4 and above systems.
+
+
 ## 1. Conditions of use:
 1. Android SDK minimum version android4.4 (API 19).
 2. The Bluetooth version used by the device requires 4.0 or above.
@@ -81,12 +83,14 @@ You can also use the aar package dependency, please download it yourself and put
 
 
 
-### 1, Initialization, [key registered address](http://sdk.aicare.net.cn)
+- First configure the key and secret for the SDK, [application address](http://sdk.aicare.net.cn)
+
 ```
 TpmsSDK.init(this, key, secret);
 ```
 
-### 2, Implement the TpmsScan.TpmsScanListener method
+- Implement the TpmsScan.TpmsScanListener method
+
 ```
 TpmsScan mTpmsScan = new TpmsScan (new TpmsScan.TpmsScanListener () {
             @Override
@@ -94,8 +98,11 @@ TpmsScan mTpmsScan = new TpmsScan (new TpmsScan.TpmsScanListener () {
                 
             }
         });
+
 ```
+
 ### 3, search for TpmsScan.startScan (String [] deviceIdS);
+
 ```
     / **
      * Search device, search all devices by default and return through TpmsScanListener interface
@@ -109,8 +116,11 @@ TpmsScan mTpmsScan = new TpmsScan (new TpmsScan.TpmsScanListener () {
      TpmsScan.startScan (String [] deviceIdS)
 
 The found devices will be returned in onGetData (...) in the TpmsScan.TpmsScanListener interface
+
 ```
+
 ### 4, Data analysis returned by the TpmsScan.TpmsScanListener interface
+
 ```
 public void onGetData (String mac, String deviceId, int rssi, float pressure, float battery, int temp, int status, float mcuVersion, int year, int month, int day, float bleVersion);
 
@@ -191,4 +201,28 @@ bleVersion: Bluetooth version number
     }
 
 ```
+
 ### 5, stop searching TpmsScan.stopScan ();
+
+
+
+## FAQ
+
+- Can't scan the Bluetooth device?
+
+1. Check whether the permissions of the App are normal. The 6.0 and above systems must locate the permissions and need to manually obtain the permissions
+2. Check whether the location service of the mobile phone is turned on, some mobile phones may need to turn on the GPS
+
+
+
+## Contact Us
+Shenzhen elink things Co., Ltd.
+
+Phone: 0755-81773367
+
+Official website: www.elinkthings.com
+
+Email: app@elinkthings.com
+
+
+
