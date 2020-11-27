@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TpmsSDK.init(this, "f36120b9dc0c042e", "00bb9f124ea3de327ed54cfa3e");
+        TpmsSDK.init(this);
         L.isDebug = true;
         initData();
         initViews();
