@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid.adapter;
+package aicare.net.cn.sdk.tpmsrepositoryandroid.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import aicare.net.cn.sdk.tmpsrepositoryandroid.R;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.bean.DeviceId;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.R;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.bean.DeviceId;
 
 /**
  * Created by Suzy on 2016/8/30.

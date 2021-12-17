@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid;
+package aicare.net.cn.sdk.tpmsrepositoryandroid;
 
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.pingwang.tpmslibrary.TpmsSDK;
 import com.pingwang.tpmslibrary.TpmsScan;
 
 import java.util.ArrayList;
@@ -21,19 +20,18 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Set;
 
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.Config;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.Configs;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.L;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.ParseData;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.SPUtils;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.T;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.views.SetIdDialog;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.Config;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.Configs;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.L;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.ParseData;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.SPUtils;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.T;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.views.SetIdDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-        TpmsScan.TpmsScanListener, OnIdSetListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, TpmsScan.TpmsScanListener, OnIdSetListener {
 
-    private Button btn_get_info,  btn_clear_log, btn_stop_scan;
+    private Button btn_get_info, btn_clear_log, btn_stop_scan;
     private TextView tv_left_front, tv_right_front, tv_left_rear, tv_right_rear;
     private ListView lv_show_log;
     private LinearLayout ll_set_id;
@@ -46,12 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String[] mDeviceIdS;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        TpmsSDK.init(this);
         L.isDebug = true;
         initData();
         initViews();
@@ -110,26 +106,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (TextUtils.isEmpty(leftFront)) {
             tv_left_front.setText(R.string.please_set_id);
         } else {
-            tv_left_front.setText(String
-                    .format(getResources().getString(R.string.left_front_id), leftFront));
+            tv_left_front.setText(String.format(getResources().getString(R.string.left_front_id), leftFront));
         }
         if (TextUtils.isEmpty(rightFront)) {
             tv_right_front.setText(R.string.please_set_id);
         } else {
-            tv_right_front.setText(String
-                    .format(getResources().getString(R.string.right_front_id), rightFront));
+            tv_right_front.setText(String.format(getResources().getString(R.string.right_front_id), rightFront));
         }
         if (TextUtils.isEmpty(leftRear)) {
             tv_left_rear.setText(R.string.please_set_id);
         } else {
-            tv_left_rear.setText(String
-                    .format(getResources().getString(R.string.left_rear_id), leftRear));
+            tv_left_rear.setText(String.format(getResources().getString(R.string.left_rear_id), leftRear));
         }
         if (TextUtils.isEmpty(rightRear)) {
             tv_right_rear.setText(R.string.please_set_id);
         } else {
-            tv_right_rear.setText(String
-                    .format(getResources().getString(R.string.right_rear_id), rightRear));
+            tv_right_rear.setText(String.format(getResources().getString(R.string.right_rear_id), rightRear));
         }
     }
 
@@ -155,8 +147,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mTpmsScan.stopScan();
         }
     }
-
-
 
 
     @Override
@@ -190,15 +180,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-
-    @Override
-    public void onGetData(String mac, String deviceId, int rssi, float pressure, float battery,
-                          int temp, int status, float mcuVersion, int year, int month, int day,
+    public void onGetData(byte[] bytes,String mac, String deviceName, int rssi, float pressure, int pressureUnit, float battery, int temp,int tempUnit, int status, float mcuVersion, int year, int month, int day,
                           float bleVersion) {
-
         if (deviceIdMap != null) {
             for (Config.DevicePosition devicePosition : deviceIdMap.keySet()) {
-                if (TextUtils.equals(deviceId, deviceIdMap.get(devicePosition))) {
+                if (TextUtils.equals(deviceName, deviceIdMap.get(devicePosition))) {
                     Config.DeviceState deviceState = Config.DeviceState.NORMAL;
                     switch (status) {
                         case 1:
@@ -222,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     buffer.append("设备位置：");
                     buffer.append(getPosition(devicePosition));
                     buffer.append(", 设备id：");
-                    buffer.append(deviceId);
+                    buffer.append(deviceName);
                     buffer.append(", 电压：");
                     buffer.append(battery);
                     buffer.append(", 气压：");
@@ -238,9 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         }
-
     }
-
 
     public void onStopScan() {
         sendMsg("停止扫描");
@@ -326,10 +310,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private boolean noId() {
         if (deviceIdMap != null && !deviceIdMap.isEmpty()) {
-            if (TextUtils.isEmpty(deviceIdMap.get(Config.DevicePosition.LEFT_FRONT)) && TextUtils
-                    .isEmpty(deviceIdMap.get(Config.DevicePosition.LEFT_REAR)) && TextUtils
-                    .isEmpty(deviceIdMap.get(Config.DevicePosition.RIGHT_FRONT)) && TextUtils
-                    .isEmpty(deviceIdMap.get(Config.DevicePosition.RIGHT_REAR))) {//当所有ID都为空时，停止扫描
+            if (TextUtils.isEmpty(deviceIdMap.get(Config.DevicePosition.LEFT_FRONT)) && TextUtils.isEmpty(deviceIdMap.get(Config.DevicePosition.LEFT_REAR)) && TextUtils
+                    .isEmpty(deviceIdMap.get(Config.DevicePosition.RIGHT_FRONT)) && TextUtils.isEmpty(deviceIdMap.get(Config.DevicePosition.RIGHT_REAR))) {//当所有ID都为空时，停止扫描
                 return true;
             }
         }
@@ -380,5 +362,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
+
 
 }

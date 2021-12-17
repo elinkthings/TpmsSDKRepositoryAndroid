@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid.views;
+package aicare.net.cn.sdk.tpmsrepositoryandroid.views;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,8 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import aicare.net.cn.sdk.tmpsrepositoryandroid.R;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.L;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.R;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.L;
 
 
 /**

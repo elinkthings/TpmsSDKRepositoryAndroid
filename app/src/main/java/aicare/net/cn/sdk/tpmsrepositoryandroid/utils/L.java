@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid.utils;
+package aicare.net.cn.sdk.tpmsrepositoryandroid.utils;
 
 import android.util.Log;
 

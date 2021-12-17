@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid.bean;
+package aicare.net.cn.sdk.tpmsrepositoryandroid.bean;
 
 /**
  * Created by Suzy on 2016/8/30.

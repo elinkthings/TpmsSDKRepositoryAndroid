@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid.views;
+package aicare.net.cn.sdk.tpmsrepositoryandroid.views;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,13 +11,13 @@ import android.widget.EditText;
 import java.util.EnumMap;
 import java.util.Map;
 
-import aicare.net.cn.sdk.tmpsrepositoryandroid.OnIdSetListener;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.R;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.Config;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.Configs;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.ParseData;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.SPUtils;
-import aicare.net.cn.sdk.tmpsrepositoryandroid.utils.T;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.OnIdSetListener;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.R;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.Config;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.Configs;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.ParseData;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.SPUtils;
+import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.T;
 
 
 /**

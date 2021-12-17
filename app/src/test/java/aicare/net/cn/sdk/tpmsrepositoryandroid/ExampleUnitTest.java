@@ -1,4 +1,4 @@
-package aicare.net.cn.sdk.tmpsrepositoryandroid;
+package aicare.net.cn.sdk.tpmsrepositoryandroid;
 
 import org.junit.Test;
 

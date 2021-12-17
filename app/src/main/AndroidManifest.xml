@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="aicare.net.cn.sdk.tmpsrepositoryandroid"
+<manifest package="aicare.net.cn.sdk.tpmsrepositoryandroid"
           xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.BLUETOOTH"/>
@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="aicare.net.cn.sdk.tpmsrepositoryandroid.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
