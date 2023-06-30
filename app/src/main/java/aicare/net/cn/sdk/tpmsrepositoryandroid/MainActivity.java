@@ -1,5 +1,6 @@
 package aicare.net.cn.sdk.tpmsrepositoryandroid;
 
+import android.annotation.SuppressLint;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.pingwang.tpmslibrary.TpmsScan;
+import com.pingwang.tpmslibrary.TpmsScanListener;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -29,7 +31,7 @@ import aicare.net.cn.sdk.tpmsrepositoryandroid.utils.T;
 import aicare.net.cn.sdk.tpmsrepositoryandroid.views.SetIdDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, TpmsScan.TpmsScanListener, OnIdSetListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, TpmsScanListener, OnIdSetListener {
 
     private Button btn_get_info, btn_clear_log, btn_stop_scan;
     private TextView tv_left_front, tv_right_front, tv_left_rear, tv_right_rear;
@@ -135,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private static final int REQUEST_ENABLE_BT = 2;
 
+    @SuppressLint("MissingPermission")
     private void showBLEDialog() {
         final Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
         startActivityForResult(enableIntent, REQUEST_ENABLE_BT);
@@ -180,11 +183,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void onGetData(byte[] bytes,String mac, String deviceName, int rssi, float pressure, int pressureUnit, float battery, int temp,int tempUnit, int status, float mcuVersion, int year, int month, int day,
-                          float bleVersion) {
+    @Override
+    public void onGetData(byte[] bytes,String mac, String deviceId, int rssi, float pressure, int pressureUnit, float battery, int temp,int tempUnit, int status, float mcuVersion, int year, int month, int day,
+                          float bleVersion,String deviceName) {
         if (deviceIdMap != null) {
             for (Config.DevicePosition devicePosition : deviceIdMap.keySet()) {
-                if (TextUtils.equals(deviceName, deviceIdMap.get(devicePosition))) {
+                if (TextUtils.equals(deviceId, deviceIdMap.get(devicePosition))) {
                     Config.DeviceState deviceState = Config.DeviceState.NORMAL;
                     switch (status) {
                         case 1:
@@ -208,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     buffer.append("设备位置：");
                     buffer.append(getPosition(devicePosition));
                     buffer.append(", 设备id：");
-                    buffer.append(deviceName);
+                    buffer.append(deviceId);
                     buffer.append(", 电压：");
                     buffer.append(battery);
                     buffer.append(", 气压：");
