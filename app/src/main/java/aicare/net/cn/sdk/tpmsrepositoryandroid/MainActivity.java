@@ -180,6 +180,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.ll_set_id:
                 new SetIdDialog(this, deviceIdMap, this).show();
                 break;
+            default:
+                break;
         }
     }
 
@@ -205,6 +207,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             break;
                         case 5:
                             deviceState = Config.DeviceState.WEAK_UP;
+                            break;
+                        default:
                             break;
                     }
 
