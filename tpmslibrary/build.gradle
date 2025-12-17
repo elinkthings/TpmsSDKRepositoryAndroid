@@ -34,6 +34,14 @@ android {
             jniLibs.srcDirs = ['libs']
         }
     }
+
+    //引入依赖路径
+    repositories {
+        flatDir {
+            dirs project(':tpmslibrary').file('libs')
+            dirs 'libs'
+        }
+    }
 }
 
 dependencies {
